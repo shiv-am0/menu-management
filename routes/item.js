@@ -44,24 +44,32 @@ router.get('/subcategory/:subCategoryId', async (req, res) => {
   }
 });
 
+// Search Items by Name
+router.get('/search', async (req, res) => {
+  try {
+    if(!req.body.name) {
+      return res.status(400).json({ message: "Please provide a search name"});
+    }
+
+    // Perform the search by name
+    const items = await Item.find({ name: req.body.name });
+
+    if(!items.length) {
+      return res.status(404).json({ message: "Data not found"});
+    }
+
+    res.status(200).json(items);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+});
+
 // Get an Item by ID
 router.get('/:id', async (req, res) => {
   try {
     const item = await Item.findById(req.params.id);
     if (!item) return res.status(404).json({ message: 'Item not found' });
     res.status(200).json(item);
-  } catch (err) {
-    res.status(500).json({ message: err.message });
-  }
-});
-
-// Search Items by Name
-router.get('/searchItem', async (req, res) => {
-  try {
-    console.log(`Body: ${req.body.name}`);
-    console.log(`Query: ${req.query.name}`);
-    const items = await Item.find({ name: req.query.name });
-    res.status(200).json(items);
   } catch (err) {
     res.status(500).json({ message: err.message });
   }
