@@ -56,7 +56,7 @@ The Menu Management API is a Node.js backend server built using Express.js and M
 
 2. **Run the container using the following command:**
     ```bash
-    docker run -d -p 5000:5000 -e MONGO_URI=<your_mongodb_uri> shivam001/menu-management
+    docker run -d -p 5000:5000 -e MONGO_URI=<your_mongodb_uri> -e HOST_URL=<your_server_host_url> shivam001/menu-management
     ```
     The server will start on `http://localhost:5000`.
 
