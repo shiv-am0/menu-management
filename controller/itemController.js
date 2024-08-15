@@ -4,10 +4,12 @@ const SubCategory = require("../models/SubCategory");
 // Create an Item
 const createItem = async (req, res) => {
   try {
+        // Check if the specific SubCategory exists to create an Item
         const subCategory = await SubCategory.findById(req.params.subCategoryId);
         if (!subCategory)
             return res.status(404).json({ message: "SubCategory not found" });
 
+        // Create new Item, if the given SubCategory exists
         const newItem = new Item({
         ...req.body,
         subCategoryId: req.params.subCategoryId,
@@ -16,6 +18,7 @@ const createItem = async (req, res) => {
         totalAmount: req.body.baseAmount - req.body.discount,
         });
 
+         // Save the new Item to database
         const savedItem = await newItem.save();
         res.status(201).json(savedItem);
   } catch (err) {
@@ -36,6 +39,7 @@ const getAllItems = async (req, res) => {
 // Get items under a sub-category
 const getItemsBySubCategory = async (req, res) => {
     try {
+        // Find all Items in the database
         const items = await Item.find({ subCategoryId: req.params.subCategoryId });
         res.status(200).json(items);
     } catch (err) {
@@ -46,6 +50,7 @@ const getItemsBySubCategory = async (req, res) => {
 // Search an item using name
 const searchItemByName = async (req, res) => {
     try {
+        // Check if the name property is passed to search item by name
         if(!req.body.name) {
           return res.status(400).json({ message: "Please provide a search name"});
         }
@@ -53,6 +58,7 @@ const searchItemByName = async (req, res) => {
         // Perform the search by name
         const items = await Item.find({ name: req.body.name });
     
+        // Check if the item is not found
         if(!items.length) {
           return res.status(404).json({ message: "Data not found"});
         }
@@ -66,6 +72,7 @@ const searchItemByName = async (req, res) => {
 // Get items by ID
 const getItemById = async (req, res) => {
     try {
+        // Find by ID in the database
         const item = await Item.findById(req.params.id);
         if (!item) return res.status(404).json({ message: 'Item not found' });
         res.status(200).json(item);
@@ -77,6 +84,7 @@ const getItemById = async (req, res) => {
 // Edit an Item
 const editItem = async (req, res) => {
     try {
+        // Find and update the Item in the database
         const updatedItem = await Item.findByIdAndUpdate(req.params.id, req.body, { new: true });
         if (!updatedItem) return res.status(404).json({ message: 'Item not found' });
         res.status(200).json(updatedItem);
