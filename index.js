@@ -6,6 +6,7 @@ const categoryRoutes = require('./routes/category');
 const subCategoryRoutes = require('./routes/subcategory');
 const itemRoutes = require('./routes/item');
 const connectDB = require('./config/db');
+const swaggerDocs = require('./swagger');
 require('dotenv').config();
 
 // Initialize the express app
@@ -27,4 +28,9 @@ app.use('/items', itemRoutes);
 const PORT = process.env.PORT || 5000;
 
 // Start the server
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
+
+    // Initialize swagger documentation
+    swaggerDocs(app, PORT); 
+});
