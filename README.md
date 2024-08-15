@@ -1,9 +1,11 @@
 # Menu Management API
 
 ## Overview
+
 The Menu Management API is a Node.js backend server built using Express.js and MongoDB. It allows you to manage a hierarchical menu structure consisting of categories, subcategories, and items. This API supports CRUD operations on these entities, along with search functionality to retrieve items based on their names.
 
 ## Features
+
 * **Category Management:** Create, retrieve, update, and delete categories.
 * **Subcategory Management:** Create subcategories under categories, retrieve, update, and delete subcategories.
 * **Item Management:** Create items under categories or subcategories, retrieve, update, and delete items.
@@ -12,6 +14,7 @@ The Menu Management API is a Node.js backend server built using Express.js and M
 ## Project Setup
 
 ### Prerequisites
+
 * Node.js (v14 or higher)
 * MongoDB (local or cloud instance)
 * Postman (for API testing)
@@ -33,8 +36,9 @@ The Menu Management API is a Node.js backend server built using Express.js and M
     - Create a `.env` file in the root of the project.
     - Add the following environment variables:
         ```env
-        MONGO_URI=<your-mongodb-connection-string>
         PORT=5000
+        MONGO_URI=<your-mongodb-connection-string>
+        HOST_URL=<your-server-host-url>
         ```
 
 4. **Run the server:**
@@ -81,3 +85,7 @@ The Menu Management API is a Node.js backend server built using Express.js and M
 * **Search an Item by Name:** `GET /items/search`
 * **Get Item by ID:** `GET /items/:id`
 * **Update an Item:** `PUT /items/:id`
+
+## API Documentation
+
+The support for API documentation is added using Swagger. The docs can be viewed and the endpoints can be tested on the following endpoint: `HOST_URL/api-docs`
