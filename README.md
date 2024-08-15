@@ -42,3 +42,42 @@ The Menu Management API is a Node.js backend server built using Express.js and M
     npm start
     ```
     The server will start on `http://localhost:5000`.
+
+## Run using Docker
+
+1. **Run the following command to pull the Docker image:**
+    ```bash
+    docker pull shivam001/menu-management
+    ```
+
+2. **Run the container using the following command:**
+    ```bash
+    docker run -d -p 5000:5000 -e MONGO_URI=<your_mongodb_uri> shivam001/menu-management
+    ```
+    The server will start on `http://localhost:5000`.
+
+## API Endpoints
+
+### Categories
+
+* **Create Category:** `POST /categories`
+* **Get All Categories:** `GET /categories`
+* **Get a Category by ID:** `GET /categories/:id`
+* **Update a Category:** `PUT /categories/:id`
+
+### Subcategories
+
+* **Create a Subcategory:** `POST /subcategories/:categoryId`
+* **Get All Subcategories:** `GET /subcategories`
+* **Get All Subcategories Under a Category:** `GET /subcategories/category/:categoryId`
+* **Get Subcategory by ID:** `GET /subcategories/:id`
+* **Update a Subcategory:** `PUT /subcategories/:id`
+
+### Items
+
+* **Create an Item:** `POST /items/:subCategoryId`
+* **Get All Items:** `GET /items`
+* **Get All Items under a Subcategory:** `GET /items/subcategory/:subCategoryId`
+* **Search an Item by Name:** `GET /items/search`
+* **Get Item by ID:** `GET /items/:id`
+* **Update an Item:** `PUT /items/:id`
