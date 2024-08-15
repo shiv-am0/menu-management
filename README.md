@@ -89,3 +89,7 @@ The Menu Management API is a Node.js backend server built using Express.js and M
 ## API Documentation
 
 The support for API documentation is added using Swagger. The docs can be viewed and the endpoints can be tested on the following endpoint: `HOST_URL/api-docs`
+
+## License
+
+This project is licensed under the [MIT License](/LICENSE).
