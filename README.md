@@ -24,7 +24,7 @@ The Menu Management API is a Node.js backend server built using Express.js and M
 1. **Clone the repository:**
     ```bash
     git clone https://github.com/shiv-am0/menu-management.git
-    cd menu-management-api
+    cd menu-management
     ```
 
 2. **Install dependencies:**
