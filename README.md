@@ -6,10 +6,10 @@ The Menu Management API is a Node.js backend server built using Express.js and M
 
 ## Features
 
-* **Category Management:** Create, retrieve, update, and delete categories.
-* **Subcategory Management:** Create subcategories under categories, retrieve, update, and delete subcategories.
-* **Item Management:** Create items under categories or subcategories, retrieve, update, and delete items.
-* **Search Functionality:** Search items by their names.
+* **Category Management:** Create, retrieve, and update categories.
+* **Subcategory Management:** Create, retrieve, and update subcategories.
+* **Item Management:** Create, retrieve, and update items.
+* **Search Functionality:** Search item by its name.
 
 ## Project Setup
 
